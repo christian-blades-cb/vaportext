@@ -8,3 +8,10 @@ Make any text suitable for the title of your next album
 $ echo "aesthetic" | ./vaportext
 ａｅｓｔｈｅｔｉｃ
 ```
+
+Or for bass boost:
+
+```
+$ echo "runescanner1982" | ./vaportext -kana
+ｒｕｎｅｓｃａｎｎｅｒ１９８２テメビ
+```
