@@ -20,12 +20,17 @@ func main() {
 	flag.Parse()
 
 	seeded := false
+	newline := false
 
 	ｒｕｎｅｓｃａｎｎｅｒ := bufio.NewScanner(os.Stdin)
 	ｒｕｎｅｓｃａｎｎｅｒ.Split(bufio.ScanRunes)
 	for ｒｕｎｅｓｃａｎｎｅｒ.Scan() {
 		r := ｒｕｎｅｓｃａｎｎｅｒ.Bytes()
 		os.Stdout.Write(width.Widen.Bytes(r))
+
+		if r[0] == []byte("\n")[0] {
+			newline = true
+		}
 
 		if !seeded { // first rune is the seed, deterministic
 			seed, _ := binary.Varint(r)
@@ -37,6 +42,10 @@ func main() {
 	if kana != nil && *kana {
 		for i := rand.Intn(6); i >= 0; i-- {
 			os.Stdout.Write([]byte(string(rune(KanaLo + rand.Intn(KanaHi-KanaLo)))))
+		}
+
+		if newline {
+			os.Stdout.Write([]byte("\n"))
 		}
 	}
 }
