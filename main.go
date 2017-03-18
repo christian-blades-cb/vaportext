@@ -20,9 +20,9 @@ func main() {
 	kana := flag.Bool("kana", false, "append random full-width kana")
 	flag.Parse()
 
-	seeded := false
 	outbuffer := bytes.NewBuffer(nil)
 
+	var seed int64
 	ｒｕｎｅｓｃａｎｎｅｒ := bufio.NewScanner(os.Stdin)
 	ｒｕｎｅｓｃａｎｎｅｒ.Split(bufio.ScanRunes)
 	var r []byte
@@ -30,12 +30,10 @@ func main() {
 		r = ｒｕｎｅｓｃａｎｎｅｒ.Bytes()
 		outbuffer.Write(width.Widen.Bytes(r))
 
-		if !seeded { // first rune is the seed, deterministic
-			seed, _ := binary.Varint(r)
-			rand.Seed(seed)
-			seeded = true
-		}
+		s, _ := binary.Varint(r)
+		seed ^= s
 	}
+	rand.Seed(seed)
 
 	if string(r) == "\n" {
 		outbuffer.Truncate(outbuffer.Len() - 1)
