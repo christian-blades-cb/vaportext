@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/binary"
 	"flag"
 	"golang.org/x/text/width"
@@ -34,6 +35,7 @@ func main() {
 			rand.Seed(seed)
 			seeded = true
 		}
+	}
 
 	if string(r) == "\n" {
 		outbuffer.Truncate(outbuffer.Len() - 1)
