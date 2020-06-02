@@ -1,5 +1,7 @@
 # ｖａｐｏｒｔｅｘｔ
 
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+
 Make any text suitable for the title of your next album
 
 ## Usage
