@@ -3,9 +3,9 @@
 
 pkgs.buildGo113Module {
   pname = "vaportext";
-  version = "1.0.1";
+  version = "1.0.2";
 
-  modSha256 = "1aa3d2x6yk3ik9mwlkzia0mi7cq339884zz4vhqc0fr5vil2r54n";
+  modSha256 = "1q1lx8fwhr26gis0fl76h48xk04kvvrzadv3arnih9qgc31l6rjp";
 
   src = pkgs.lib.cleanSource ./.;
 
